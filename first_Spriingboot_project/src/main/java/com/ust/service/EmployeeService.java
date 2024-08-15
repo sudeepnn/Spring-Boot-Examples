@@ -36,14 +36,14 @@ public class EmployeeService {
 	
 	}
 	
-	public void deleteEmployeByID(int id) {
+	public String deleteEmployeByID(int id) {
 		Optional<Employe> op= repo.findById(id);
 		if(op.isPresent()) {
 			repo.deleteById(id);
-			System.err.println("Employee Deleted Successfully");
+			return "Employee Deleted Successfully";
 		}
 		else 
-			System.err.println("Employee Not found");
+			return "Employee Not found";
 	}
 	
 	public String UpdateEmployeSalary(int id,int newsalary) {
@@ -58,6 +58,18 @@ public class EmployeeService {
 		}
 		
 	}
+	public String UpdateEmploye(Employe e) {
+		Employe employe=getEmployeByID(e.getAge());
+		if(employe!=null) {
+			repo.saveAndFlush(e);
+			return "Employe updated";
+		}
+		else {
+			return "Employe Not Found";
+		}
+		
+	}
+	
 	
 
 }

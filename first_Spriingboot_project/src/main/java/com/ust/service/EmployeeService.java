@@ -14,9 +14,10 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository repo;
 	
-	public void saveEmployee(Employe emp) {
+	public Employe saveEmployee(Employe emp) {
 		repo.saveAndFlush(emp);
-		System.err.println("Employee saved");
+//		System.err.println("Employee saved")
+		return emp;
 	}
 	
 	public List<Employe> getAllEmploye(){
